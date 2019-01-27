@@ -45,6 +45,14 @@ class TestParseOperators(unittest.TestCase):
     self.assertEqual(is_operator('>'), False)
 
 
+class TestOperators(unittest.TestCase):
+  def test_add_time(self):
+    t1 = Time('5h75')
+    t2 = Time('3h2')
+    sum_t = t1 + t2
+    self.assertEqual(str(t1 + t2), '9h17')
+
+
 if __name__ == '__main__':
   # unittest.main(verbosity=2)
   unittest.main()

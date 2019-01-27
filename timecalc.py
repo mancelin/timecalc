@@ -3,7 +3,6 @@ import sys
 
 class Time:
   def __init__(self, timestring):
-    print("timestring : " + timestring)
     time_list = timestring.split('h')
     # just minutes, ex : '30'
     if len(time_list) == 1:
@@ -26,7 +25,14 @@ class Time:
       self.minutes = self.minutes % 60
 
   def __str__(self):
-    return "{}h{}".format(self.hours, self.minutes)
+    return '{}h{}'.format(self.hours, self.minutes)
+
+  def __add__(self, other):
+    t = Time('')
+    t.minutes = self.minutes + other.minutes
+    t.hours = self.hours + other.hours
+    t.minutes_to_hours()
+    return t
 
 
 def is_timestring(str):
