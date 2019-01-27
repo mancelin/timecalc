@@ -77,9 +77,26 @@ def is_operator(str):
   return is_plus(str) or is_minus(str) or is_arrow(str)
 
 if __name__ == '__main__':
-  print('timecalc')
-  t1 = Time('7h05')
-  t2 = Time('9h02')
-  print(t1.to(t2))
   args = sys.argv[1:]
   print(args)
+  previous_arg = None
+  previous_time = None
+  current_operator = None
+  total = Time('')
+  for arg in args:
+    if is_timestring(arg):
+      if previous_arg == 'timestring':
+        print('Malformed operation : 2 consecutive timestrings')
+      else:
+        current_time = Time(arg)
+        if current_operator == '+':
+          total += previous_time + current_time
+        previous_time = current_time
+        previous_arg = 'timestring'
+    if is_operator(arg):
+      if previous_arg == 'operator':
+        print('Malformed operation : 2 consecutive operators')
+      else:
+        current_operator = '+'
+        previous_arg = 'operator'
+  print(total)
