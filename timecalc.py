@@ -70,8 +70,9 @@ def is_plus(str):
 def is_minus(str):
   return re.match('^-$', str) != None
 
+# use -> and also char 'v' as arrow operator to use arrow without needing '' protection on console
 def is_arrow(str):
-  return re.match('^->$', str) != None
+  return re.match('^->$', str) != None or re.match('^v$', str) != None
 
 def is_operator(str):
   return is_plus(str) or is_minus(str) or is_arrow(str)
