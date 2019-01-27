@@ -71,6 +71,16 @@ class TestOperators(unittest.TestCase):
     t2 = Time('9h84')
     self.assertEqual(str(t1 - t2), '-18h29')
 
+  def test_to_1(self):
+    t1 = Time('7h05')
+    t2 = Time('9h02')
+    self.assertEqual(str(t1.to(t2)), '1h57')
+
+  def test_to_2(self):
+    t1 = Time('05')
+    t2 = Time('9h10')
+    self.assertEqual(str(t1.to(t2)), '9h05')
+
 
 if __name__ == '__main__':
   # unittest.main(verbosity=2)

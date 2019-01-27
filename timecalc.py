@@ -56,6 +56,10 @@ class Time:
     t.minutes_to_hours()
     return t
 
+  # -> opérator
+  def to(self, other):
+    return other - self
+
 
 def is_timestring(str):
   return re.match('^\d*h?\d*?$', str) != None
@@ -73,8 +77,9 @@ def is_operator(str):
   return is_plus(str) or is_minus(str) or is_arrow(str)
 
 if __name__ == '__main__':
-  print("timecalc")
-  t = Time("5h75")
-  print(t)
+  print('timecalc')
+  t1 = Time('7h05')
+  t2 = Time('9h02')
+  print(t1.to(t2))
   args = sys.argv[1:]
   print(args)
