@@ -8,7 +8,10 @@ class Time:
     # just minutes, ex : '30'
     if len(time_list) == 1:
       self.hours = 0
-      self.minutes = int(time_list[0])
+      if (timestring == ''):
+        self.minutes = 0
+      else:
+        self.minutes = int(time_list[0])
     if len(time_list) == 2:
       self.hours = int(time_list[0])
       if time_list[1] == '':
@@ -33,6 +36,8 @@ if __name__ == '__main__':
   args = sys.argv[1:]
   print(args)
   t = Time(args[0])
+  t = Time('')
+  print(t)
   test_is_timestring(args[0])
   test_is_timestring('3h51')
   test_is_timestring('3h')
