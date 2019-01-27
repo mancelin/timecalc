@@ -18,6 +18,9 @@ class Time:
         self.minutes = 0
       else:
         self.minutes = int(time_list[1])
+    self.minutes_to_hours()
+
+  def minutes_to_hours(self):
     if self.minutes >= 60:
       self.hours = self.hours + int(self.minutes / 60)
       self.minutes = self.minutes % 60
