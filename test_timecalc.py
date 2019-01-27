@@ -54,12 +54,22 @@ class TestOperators(unittest.TestCase):
   def test_sub_time_1(self):
     t1 = Time('5h75')
     t2 = Time('7h2')
-    self.assertEqual(str(t1 - t2), '-1h13')
+    self.assertEqual(str(t1 - t2), '-0h47')
 
   def test_sub_time_2(self):
     t1 = Time('2h50')
     t2 = Time('2h20')
     self.assertEqual(str(t1 - t2), '0h30')
+
+  def test_sub_time_3(self):
+    t1 = Time('1h10')
+    t2 = Time('50')
+    self.assertEqual(str(t1 - t2), '0h20')
+
+  def test_sub_time_4(self):
+    t1 = Time('-8h05')
+    t2 = Time('9h84')
+    self.assertEqual(str(t1 - t2), '-18h29')
 
 
 if __name__ == '__main__':

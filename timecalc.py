@@ -17,15 +17,29 @@ class Time:
         self.minutes = 0
       else:
         self.minutes = int(time_list[1])
+    self.sign = ''
     self.minutes_to_hours()
 
   def minutes_to_hours(self):
+    is_negative = False
+    if self.hours < 0 or self.minutes < 0:
+      self.sign = '-'
+      is_negative = True
+      self.hours = abs(self.hours)
+      self.minutes = abs(self.minutes)
     if self.minutes >= 60:
       self.hours = self.hours + int(self.minutes / 60)
       self.minutes = self.minutes % 60
+    if is_negative:
+      self.hours *= -1
+      self.minutes *= -1
+
+  def to_minutes(self):
+    self.minutes = 60 * self.hours + self.minutes
+    self.hours = 0
 
   def __str__(self):
-    return '{}h{}'.format(self.hours, self.minutes)
+    return '{}{}h{}'.format(self.sign, abs(self.hours), abs(self.minutes))
 
   def __add__(self, other):
     t = Time('')
@@ -36,8 +50,9 @@ class Time:
 
   def __sub__(self, other):
     t = Time('')
+    self.to_minutes()
+    other.to_minutes()
     t.minutes = self.minutes - other.minutes
-    t.hours = self.hours - other.hours
     t.minutes_to_hours()
     return t
 
