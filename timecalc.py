@@ -12,12 +12,15 @@ class Time:
         self.minutes = 0
       else:
         self.minutes = int(time_list[0])
-    if len(time_list) == 2:
+    elif len(time_list) == 2:
       self.hours = int(time_list[0])
       if time_list[1] == '':
         self.minutes = 0
       else:
         self.minutes = int(time_list[1])
+    if self.minutes >= 60:
+      self.hours = self.hours + int(self.minutes / 60)
+      self.minutes = self.minutes % 60
 
   def __str__(self):
     return "{} hours {} minutes".format(self.hours, self.minutes)
@@ -40,5 +43,7 @@ def is_operator(str):
 
 if __name__ == '__main__':
   print("timecalc")
+  t = Time("5h75")
+  print(t)
   args = sys.argv[1:]
   print(args)
