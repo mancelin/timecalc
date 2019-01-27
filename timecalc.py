@@ -39,7 +39,7 @@ class Time:
     self.hours = 0
 
   def __str__(self):
-    return '{}{}h{}'.format(self.sign, abs(self.hours), abs(self.minutes))
+    return '{}{}h{}'.format(self.sign, abs(self.hours), str(abs(self.minutes)).zfill(2))
 
   def __add__(self, other):
     t = Time('')
