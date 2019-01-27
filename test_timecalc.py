@@ -49,8 +49,17 @@ class TestOperators(unittest.TestCase):
   def test_add_time(self):
     t1 = Time('5h75')
     t2 = Time('3h2')
-    sum_t = t1 + t2
     self.assertEqual(str(t1 + t2), '9h17')
+
+  def test_sub_time_1(self):
+    t1 = Time('5h75')
+    t2 = Time('7h2')
+    self.assertEqual(str(t1 - t2), '-1h13')
+
+  def test_sub_time_2(self):
+    t1 = Time('2h50')
+    t2 = Time('2h20')
+    self.assertEqual(str(t1 - t2), '0h30')
 
 
 if __name__ == '__main__':

@@ -34,6 +34,13 @@ class Time:
     t.minutes_to_hours()
     return t
 
+  def __sub__(self, other):
+    t = Time('')
+    t.minutes = self.minutes - other.minutes
+    t.hours = self.hours - other.hours
+    t.minutes_to_hours()
+    return t
+
 
 def is_timestring(str):
   return re.match('^\d*h?\d*?$', str) != None
