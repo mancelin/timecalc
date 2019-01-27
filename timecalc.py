@@ -27,21 +27,7 @@ def is_timestring(str):
   return re.match('^\d*h?\d*?$', str) != None
 
 
-def test_is_timestring(str):
-  print("is_timestring('{}') : {}".format(str, is_timestring(str)))
-
-
 if __name__ == '__main__':
   print("timecalc")
   args = sys.argv[1:]
   print(args)
-  t = Time(args[0])
-  t = Time('')
-  print(t)
-  test_is_timestring(args[0])
-  test_is_timestring('3h51')
-  test_is_timestring('3h')
-  test_is_timestring('05')
-  test_is_timestring('05ee')
-  test_is_timestring('text')
-  print(t)
