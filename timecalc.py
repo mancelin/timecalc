@@ -91,12 +91,21 @@ if __name__ == '__main__':
         current_time = Time(arg)
         if current_operator == '+':
           total += previous_time + current_time
+        if current_operator == '-':
+          total += previous_time - current_time
+        if current_operator == '->':
+          total += previous_time.to(current_time)
         previous_time = current_time
         previous_arg = 'timestring'
     if is_operator(arg):
       if previous_arg == 'operator':
         print('Malformed operation : 2 consecutive operators')
       else:
-        current_operator = '+'
+        if is_plus(arg):
+          current_operator = '+'
+        elif is_minus(arg):
+          current_operator = '-'
+        elif is_arrow(arg):
+          current_operator = '->'
         previous_arg = 'operator'
   print(total)
