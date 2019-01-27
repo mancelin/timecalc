@@ -6,3 +6,6 @@ test_minus:
 
 test_arrow:
 	python timecalc.py 18h20 -> 19h11
+
+test:
+	python test_timecalc.py
