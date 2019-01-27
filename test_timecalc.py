@@ -2,7 +2,7 @@ import unittest
 from timecalc import *
 
 
-class TestTimestring(unittest.TestCase):
+class TestParseTimestring(unittest.TestCase):
   def test_is_timestring_minutes(self):
     self.assertEqual(is_timestring('05'), True)
 
@@ -22,5 +22,29 @@ class TestTimestring(unittest.TestCase):
     self.assertEqual(is_timestring('05:50'), False)
 
 
+class TestParseOperators(unittest.TestCase):
+  def test_is_plus(self):
+    self.assertEqual(is_plus('+'), True)
+
+  def test_is_minus(self):
+    self.assertEqual(is_minus('-'), True)
+
+  def test_is_arrow(self):
+    self.assertEqual(is_arrow('->'), True)
+
+  def test_is_operator(self):
+    self.assertEqual(is_operator('+'), True)
+
+  def test_is_operator_2(self):
+    self.assertEqual(is_operator('-'), True)
+
+  def test_is_operator_3(self):
+    self.assertEqual(is_operator('->'), True)
+
+  def test_is_not_operator(self):
+    self.assertEqual(is_operator('>'), False)
+
+
 if __name__ == '__main__':
-  unittest.main(verbosity=2)
+  # unittest.main(verbosity=2)
+  unittest.main()

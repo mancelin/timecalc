@@ -26,6 +26,17 @@ class Time:
 def is_timestring(str):
   return re.match('^\d*h?\d*?$', str) != None
 
+def is_plus(str):
+  return re.match('^\+$', str) != None
+
+def is_minus(str):
+  return re.match('^-$', str) != None
+
+def is_arrow(str):
+  return re.match('^->$', str) != None
+
+def is_operator(str):
+  return is_plus(str) or is_minus(str) or is_arrow(str)
 
 if __name__ == '__main__':
   print("timecalc")
