@@ -26,7 +26,7 @@ class Time:
       self.minutes = self.minutes % 60
 
   def __str__(self):
-    return "{} hours {} minutes".format(self.hours, self.minutes)
+    return "{}h{}".format(self.hours, self.minutes)
 
 
 def is_timestring(str):
