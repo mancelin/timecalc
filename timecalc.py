@@ -82,7 +82,7 @@ def is_operator(str):
 
 if __name__ == '__main__':
   args = sys.argv[1:]
-  print(args)
+  # print(args)
   previous_arg = None
   previous_time = None
   current_operator = None
