@@ -87,6 +87,7 @@ if __name__ == '__main__':
   previous_time = None
   current_operator = None
   total = Time('')
+  first_operation = True
   for arg in args:
     if is_timestring(arg):
       if previous_arg == 'timestring':
@@ -94,11 +95,20 @@ if __name__ == '__main__':
       else:
         current_time = Time(arg)
         if current_operator == '+':
-          total += previous_time + current_time
+          if first_operation:
+            total = previous_time + current_time
+            first_operation = False
+          else:
+            total += current_time
         if current_operator == '-':
-          total += previous_time - current_time
+          if first_operation:
+            total = previous_time - current_time
+            first_operation = False
+          else:
+            total -= current_time
         if current_operator == '->':
           total += previous_time.to(current_time)
+          first_operation = False
         previous_time = current_time
         previous_arg = 'timestring'
     if is_operator(arg):
